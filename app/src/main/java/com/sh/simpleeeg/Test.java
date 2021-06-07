@@ -460,8 +460,8 @@ public class Test extends Activity {
                         imgLifeValue.setImageResource(R.drawable.flowerscore);
                         Glide.with(mContext).load(R.drawable.bg_test_nature).apply(myGdiOptions).into(ivBG);
                         //=
-                        Checkpoint1 = LifeValue;
-                        LifeValue = 0;
+                        Checkpoint1 = LifeValue;  //第一關的生命值
+                        LifeValue = 0;  //生命值重製(因為下一關是放鬆，起始值為0)
 
                         break;
 
@@ -488,7 +488,7 @@ public class Test extends Activity {
                         Glide.with(mContext).load(R.drawable.bg_test_hot).apply(myGdiOptions).into(ivBG);
                         //=
                         Checkpoint2 = LifeValue;
-                        LifeValue = 5;
+                        LifeValue = 5;  //生命值重製(因為下一關是專注，起始值為5)
                         break;
 
                     case 4 :

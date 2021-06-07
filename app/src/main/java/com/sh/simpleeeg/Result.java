@@ -25,7 +25,7 @@ public class Result extends Activity {
 
         TextView tvGrade01,tvGrade02,tvGrade03,tvGrade04,tvGrade05;
         TextView tvCombo1,tvCombo2,tvCombo3,tvCombo4,tvCombo5;
-        TextView tvTotalGrade, tvResult;
+        TextView tvTotalGrade, tvGradeLevelTitle, tvGradeLevel, tvResultTitle, tvResult;
         int grade01,grade02,grade03,grade04,grade05;
         int Total;
 
@@ -36,6 +36,9 @@ public class Result extends Activity {
         tvGrade04 = findViewById(R.id.tvGrade04);
         tvGrade05 = findViewById(R.id.tvGrade05);
 
+        tvGradeLevelTitle = findViewById(R.id.tvGradeLevelTitle);
+        tvGradeLevel = findViewById(R.id.tvGradeLevel);
+
         tvCombo1 = findViewById(R.id.tvCombo1);
         tvCombo2 = findViewById(R.id.tvCombo2);
         tvCombo3 = findViewById(R.id.tvCombo3);
@@ -43,6 +46,8 @@ public class Result extends Activity {
         tvCombo5 = findViewById(R.id.tvCombo5);
 
         tvTotalGrade = findViewById(R.id.tvTotalGrade);
+
+        tvResultTitle = findViewById(R.id.tvResultTitle);
         tvResult = findViewById(R.id.tvResult);
 
         tvGrade01.setText(String.valueOf(Test.Checkpoint1));
@@ -78,10 +83,12 @@ public class Result extends Activity {
         grades.add(grade04);
         grades.add(grade05);
 
-        int indexOfMaxElement = grades.indexOf(Collections.max(grades));
+        int indexOfMaxElement = grades.indexOf(Collections.max(grades));    //取最大值的索引值
         if(Total < 60){
             tvResult.setText("不合格的音樂家...");
+            tvResultTitle.setTextColor(Color.parseColor("#CACACA"));
             tvResult.setTextColor(Color.parseColor("#CACACA"));
+
         }else {
             switch (indexOfMaxElement) {
                 case 0:
@@ -101,10 +108,37 @@ public class Result extends Activity {
                     break;
             }
         }
-
-
             tvTotalGrade.setText(String.valueOf(Total));
 
+        if(0 <= Total && Total < 30){
+            tvGradeLevel.setText("F");
+            tvGradeLevelTitle.setTextColor(Color.parseColor("#CACACA"));
+            tvGradeLevel.setTextColor(Color.parseColor("#CACACA"));
+        }else if(30 <= Total && Total < 45){
+            tvGradeLevel.setText("D");
+            tvGradeLevelTitle.setTextColor(Color.parseColor("#87683C"));
+            tvGradeLevel.setTextColor(Color.parseColor("#87683C"));
+        }else if(45 <= Total && Total < 60){
+            tvGradeLevel.setText("C");
+            tvGradeLevelTitle.setTextColor(Color.parseColor("#56A35A"));
+            tvGradeLevel.setTextColor(Color.parseColor("#56A35A"));
+        }else if(60 <= Total && Total < 80){
+            tvGradeLevel.setText("B");
+            tvGradeLevelTitle.setTextColor(Color.parseColor("#5C6BC0"));
+            tvGradeLevel.setTextColor(Color.parseColor("#5C6BC0"));
+        }else if(80 <= Total && Total < 90){
+            tvGradeLevel.setText("A");
+            tvGradeLevelTitle.setTextColor(Color.parseColor("#EC407A"));
+            tvGradeLevel.setTextColor(Color.parseColor("#EC407A"));
+        }else if(90 <= Total && Total < 100){
+            tvGradeLevel.setText("S");
+            tvGradeLevelTitle.setTextColor(Color.parseColor("#FFCA28"));
+            tvGradeLevel.setTextColor(Color.parseColor("#FFCA28"));
+        }else{
+            tvGradeLevel.setText("S++");
+            tvGradeLevelTitle.setTextColor(Color.parseColor("#FFCA28"));
+            tvGradeLevel.setTextColor(Color.parseColor("#FFCA28"));
+        }
     }
 
     public void BackToMain(View view) {
@@ -117,6 +151,10 @@ public class Result extends Activity {
         Intent intent = new Intent();
         intent.setClass(this, Report.class);//input info
         startActivity(intent);
+    }
+
+    public void LevelSet(){
+
     }
 
 }
