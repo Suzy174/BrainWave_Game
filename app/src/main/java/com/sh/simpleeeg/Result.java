@@ -26,6 +26,8 @@ public class Result extends Activity {
         TextView tvGrade01,tvGrade02,tvGrade03,tvGrade04,tvGrade05;
         TextView tvCombo1,tvCombo2,tvCombo3,tvCombo4,tvCombo5;
         TextView tvTotalGrade, tvGradeLevelTitle, tvGradeLevel, tvResultTitle, tvResult;
+        TextView tvRecommend01,tvRecommend02;
+        TextView tvNotes01,tvNotes02,tvNotes03,tvNotes04,tvNotes05;
         int grade01,grade02,grade03,grade04,grade05;
         int Total;
 
@@ -45,10 +47,19 @@ public class Result extends Activity {
         tvCombo4 = findViewById(R.id.tvCombo4);
         tvCombo5 = findViewById(R.id.tvCombo5);
 
+        tvNotes01 = findViewById(R.id.tvNotes01);
+        tvNotes02 = findViewById(R.id.tvNotes02);
+        tvNotes03 = findViewById(R.id.tvNotes03);
+        tvNotes04= findViewById(R.id.tvNotes04);
+        tvNotes05 = findViewById(R.id.tvNotes05);
+
         tvTotalGrade = findViewById(R.id.tvTotalGrade);
 
         tvResultTitle = findViewById(R.id.tvResultTitle);
         tvResult = findViewById(R.id.tvResult);
+
+        tvRecommend01 = findViewById(R.id.tvRecommend01);
+        tvRecommend02 = findViewById(R.id.tvRecommend02);
 
         tvGrade01.setText(String.valueOf(Test.Checkpoint1));
         tvGrade02.setText(String.valueOf(Test.Checkpoint2));
@@ -68,11 +79,11 @@ public class Result extends Activity {
         grade04 = Test.Checkpoint4 * 4 + Test.ComboCount4 * 5;
         grade05 = Test.Checkpoint5 * 4 + Test.ComboCount5 * 5;
 
-        System.out.println(grade01);
-        System.out.println(grade02);
-        System.out.println(grade03);
-        System.out.println(grade04);
-        System.out.println(grade05);
+        tvNotes01.setText("+" + grade01);
+        tvNotes02.setText("+" + grade02);
+        tvNotes03.setText("+" + grade03);
+        tvNotes04.setText("+" + grade04);
+        tvNotes05.setText("+" + grade05);
 
         Total = grade01 + grade02 +grade03 +grade04 +grade05;
 
@@ -83,14 +94,14 @@ public class Result extends Activity {
         grades.add(grade04);
         grades.add(grade05);
 
-        int indexOfMaxElement = grades.indexOf(Collections.max(grades));    //取最大值的索引值
+        int Types = grades.indexOf(Collections.max(grades));    //取最大值的索引值
         if(Total < 60){
             tvResult.setText("不合格的音樂家...");
             tvResultTitle.setTextColor(Color.parseColor("#CACACA"));
             tvResult.setTextColor(Color.parseColor("#CACACA"));
 
         }else {
-            switch (indexOfMaxElement) {
+            switch (Types) {
                 case 0:
                     tvResult.setText("古典型音樂家");
                     break;
@@ -139,6 +150,63 @@ public class Result extends Activity {
             tvGradeLevelTitle.setTextColor(Color.parseColor("#FFCA28"));
             tvGradeLevel.setTextColor(Color.parseColor("#FFCA28"));
         }
+
+        List recommendArray = new ArrayList();
+        recommendArray.add(Test.RecommendCount_A1);  //古典 + 專注
+        recommendArray.add(Test.RecommendCount_A2);  //平靜 + 專注
+        recommendArray.add(Test.RecommendCount_A3);  //熱血 + 專注
+        recommendArray.add(Test.RecommendCount_A4);  //流行 + 專注
+        recommendArray.add(Test.RecommendCount_A5);  //雙耳 + 專注
+        recommendArray.add(Test.RecommendCount_M1);  //古典 + 放鬆
+        recommendArray.add(Test.RecommendCount_M2);  //平靜 + 放鬆
+        recommendArray.add(Test.RecommendCount_M3);  //熱血 + 放鬆
+        recommendArray.add(Test.RecommendCount_M4);  //流行 + 放鬆
+        recommendArray.add(Test.RecommendCount_M5);  //古典 + 放鬆
+        int RecommendMAX = recommendArray.indexOf(Collections.max(recommendArray));
+        System.out.println("RecommendMAX : " + RecommendMAX);
+        switch (RecommendMAX){
+            case 0 :
+                tvRecommend01.setText("古典");tvRecommend01.setBackgroundResource(R.drawable.challenge_song);
+                tvRecommend02.setText("專注");tvRecommend02.setBackgroundResource(R.drawable.challenge_attention);
+                break;
+            case 1 :
+                tvRecommend01.setText("平靜");tvRecommend01.setBackgroundResource(R.drawable.challenge_song);
+                tvRecommend02.setText("專注");tvRecommend02.setBackgroundResource(R.drawable.challenge_attention);
+                break;
+            case 2 :
+                tvRecommend01.setText("熱血");tvRecommend01.setBackgroundResource(R.drawable.challenge_song);
+                tvRecommend02.setText("專注");tvRecommend02.setBackgroundResource(R.drawable.challenge_attention);
+                break;
+            case 3 :
+                tvRecommend01.setText("流行");tvRecommend01.setBackgroundResource(R.drawable.challenge_song);
+                tvRecommend02.setText("專注");tvRecommend02.setBackgroundResource(R.drawable.challenge_attention);
+                break;
+            case 4 :
+                tvRecommend01.setText("雙耳");tvRecommend01.setBackgroundResource(R.drawable.challenge_song);
+                tvRecommend02.setText("專注");tvRecommend02.setBackgroundResource(R.drawable.challenge_attention);
+                break;
+            case 5 :
+                tvRecommend01.setText("古典");tvRecommend01.setBackgroundResource(R.drawable.challenge_song);
+                tvRecommend02.setText("放鬆");tvRecommend02.setBackgroundResource(R.drawable.challenge_meditation);
+                break;
+            case 6 :
+                tvRecommend01.setText("平靜");tvRecommend01.setBackgroundResource(R.drawable.challenge_song);
+                tvRecommend02.setText("放鬆");tvRecommend02.setBackgroundResource(R.drawable.challenge_meditation);
+                break;
+            case 7 :
+                tvRecommend01.setText("熱血");tvRecommend01.setBackgroundResource(R.drawable.challenge_song);
+                tvRecommend02.setText("放鬆");tvRecommend02.setBackgroundResource(R.drawable.challenge_meditation);
+                break;
+            case 8 :
+                tvRecommend01.setText("流行");tvRecommend01.setBackgroundResource(R.drawable.challenge_song);
+                tvRecommend02.setText("放鬆");tvRecommend02.setBackgroundResource(R.drawable.challenge_meditation);
+                break;
+            case 9 :
+                tvRecommend01.setText("雙耳");tvRecommend01.setBackgroundResource(R.drawable.challenge_song);
+                tvRecommend02.setText("放鬆");tvRecommend02.setBackgroundResource(R.drawable.challenge_meditation);
+                break;
+        }
+
     }
 
 
