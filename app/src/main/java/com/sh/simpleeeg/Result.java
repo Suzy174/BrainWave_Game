@@ -140,7 +140,6 @@ public class Result extends Activity {
             tvGradeLevel.setTextColor(Color.parseColor("#FFCA28"));
         }
     }
-    //123
 
     public void BackToMain(View view) {
         Intent intent = new Intent();
