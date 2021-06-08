@@ -81,7 +81,6 @@ public class Test extends Activity {
             ,tvChallengeWhat,tvChallengeSong;
     private static final String DB_FILE = "sample.db", DB_FILE2 = "sample2.db",
             DB_TABLE = "sample", DB_TABLE2 = "sample2" , DB_TABLE_ID = "sample3";
-    private DBHelper mySampleDbOpenHelper,mySampleDbOpenHelper2,searchID;
     private LinearLayout mLinLay;
     private ImageView imgGhost,imgDog,imgAudience,imgFlower01,imgFlower02,imgFlower03,imgFlower04,imgFlower05
             ,imgNote01,imgNote02,imgNote03,imgNote04,imgNote05
@@ -132,11 +131,11 @@ public class Test extends Activity {
     float set1=1600;
     float set2=1600;
     int LifeValue = 5;  //第一關起始值
-    static int RecommendCount_A1=0,RecommendCount_A2=0,RecommendCount_A3=0,RecommendCount_A4=0,RecommendCount_A5=0;
-    static int RecommendCount_M1=0,RecommendCount_M2=0,RecommendCount_M3=0,RecommendCount_M4=0,RecommendCount_M5=0;
+    static int AttentionAvg1=0,AttentionAvg2=0,AttentionAvg3=0,AttentionAvg4=0,AttentionAvg5=0;  //每關專注值平均
+    static int MeditationAvg1=0,MeditationAvg2=0,MeditationAvg3=0,MeditationAvg4=0,MeditationAvg5=0;  //每關放鬆值平均
     static int Checkpoint1=0,Checkpoint2=0,Checkpoint3=0,Checkpoint4=0,Checkpoint5=0;  //紀錄每關的生命值
     static int ComboCount1=0, ComboCount2=0, ComboCount3=0, ComboCount4=0, ComboCount5=0;
-    static int AttentionTimes=0,MeditationTimes=0;
+    static int AttentionTotal=0, MeditationTotal=0;
     int tpA1=0, tpA2=0, tpM1=0, tpM2=0;
     int triple=0;
     int width,height,densityDpi;
@@ -465,11 +464,14 @@ public class Test extends Activity {
                         Glide.with(mContext).load(R.drawable.bg_test_nature).apply(myGdiOptions).into(ivBG);
                         //=
                         Checkpoint1 = LifeValue;  //第一關的生命值
-                        RecommendCount_A1 = AttentionTimes;
-                        RecommendCount_M1 = MeditationTimes;
+                        AttentionAvg1 = AttentionTotal / 30; //30 = (progress - 1)
+                        MeditationAvg1 = MeditationTotal / 30;  //30 = (progress - 1)
+
+                        //AttentionAvg1 = AttentionTimes;
+                        //RecommendCount_M1 = MeditationTimes;
                         LifeValue = 0;  //生命值重製(因為下一關是放鬆，起始值為0)
-                        AttentionTimes = 0;
-                        MeditationTimes = 0;
+                        AttentionTotal = 0;
+                        MeditationTotal = 0;
 
                         break;
 
@@ -496,11 +498,11 @@ public class Test extends Activity {
                         Glide.with(mContext).load(R.drawable.bg_test_hot).apply(myGdiOptions).into(ivBG);
                         //=
                         Checkpoint2 = LifeValue;
-                        RecommendCount_A2 = AttentionTimes;
-                        RecommendCount_M2 = MeditationTimes;
+                        AttentionAvg2 = AttentionTotal / 30;
+                        MeditationAvg2 = MeditationTotal / 30;
                         LifeValue = 5;  //生命值重製(因為下一關是專注，起始值為5)
-                        AttentionTimes = 0;
-                        MeditationTimes = 0;
+                        AttentionTotal = 0;
+                        MeditationTotal = 0;
                         break;
 
                     case 4 :
@@ -525,11 +527,11 @@ public class Test extends Activity {
                         imgLifeValue.setImageResource(R.drawable.flowerscore);
                         Glide.with(mContext).load(R.drawable.bg_test_popular).apply(myGdiOptions).into(ivBG);
                         Checkpoint3 = LifeValue;
-                        RecommendCount_A3 = AttentionTimes;
-                        RecommendCount_M3 = MeditationTimes;
+                        AttentionAvg3 = AttentionTotal / 30;
+                        MeditationAvg3 = MeditationTotal / 30;
                         LifeValue = 0;
-                        AttentionTimes = 0;
-                        MeditationTimes = 0;
+                        AttentionTotal = 0;
+                        MeditationTotal = 0;
                         break;
 
                     case 5: //等級5=====
@@ -554,11 +556,11 @@ public class Test extends Activity {
                         imgLifeValue.setImageResource(R.drawable.note);
                         Glide.with(mContext).load(R.drawable.bg_test_mysterious).apply(myGdiOptions).into(ivBG);
                         Checkpoint4 = LifeValue;
-                        RecommendCount_A4 = AttentionTimes;
-                        RecommendCount_M4 = MeditationTimes;
+                        AttentionAvg4 = AttentionTotal / 30;
+                        MeditationAvg4 = MeditationTotal / 30;
                         LifeValue = 5;
-                        AttentionTimes = 0;
-                        MeditationTimes = 0;
+                        AttentionTotal = 0;
+                        MeditationTotal = 0;
                         break;
 
                     case 6: //結束=====
@@ -577,10 +579,10 @@ public class Test extends Activity {
                         loginBtnNext.setText("觀看分數");
                         //=
                         Checkpoint5 = LifeValue;
-                        RecommendCount_A5 = AttentionTimes;
-                        RecommendCount_M5 = MeditationTimes;
-                        AttentionTimes = 0;
-                        MeditationTimes = 0;
+                        AttentionAvg5 = AttentionTotal / 30;
+                        MeditationAvg5 = MeditationTotal / 30;
+                        AttentionTotal = 0;
+                        MeditationTotal = 0;
                         break;
                 }
 
@@ -943,18 +945,18 @@ public class Test extends Activity {
 
     }
 
-    public void RecommendCount(){  //推薦算分
+    /*public void RecommendCount(){  //推薦算分
         if(clsData.iGetAttention() >= 80){
             AttentionTimes++;
         }
         if(clsData.iGetMeditation() >= 80){
             MeditationTimes++;
         }
-    }
+    }*/
 //=======================================================================================================================================================
     public void StartTimer() {
         //如果timer和timerTask已經被置null了
-        progress = 31;
+
         if (timer == null&&timerTask==null) {
             //新建timer和timerTask
             timer = new Timer();
@@ -1216,7 +1218,9 @@ public class Test extends Activity {
                             }
                         }
                         ComboCount();
-                        RecommendCount();
+                        AttentionTotal += clsData.iGetAttention();
+                        MeditationTotal += clsData.iGetMeditation();
+                        //RecommendCount();
                         clsLineChart.AddPoint(1, dX, clsData.iGetAttention());
                         clsLineChart.AddPoint(2, dX, clsData.iGetMeditation());
                         tvAM.setText("專注值");
@@ -1248,7 +1252,9 @@ public class Test extends Activity {
                             }
                         }
                         ComboCount();
-                        RecommendCount();
+                        AttentionTotal += clsData.iGetAttention();
+                        MeditationTotal += clsData.iGetMeditation();
+                        //RecommendCount();
                         clsLineChart.AddPoint(1, dX, clsData.iGetAttention());
                         clsLineChart.AddPoint(2, dX, clsData.iGetMeditation());
                         tvAM.setText("放鬆值");
@@ -1281,7 +1287,9 @@ public class Test extends Activity {
                             }
                         }
                         ComboCount();
-                        RecommendCount();
+                        AttentionTotal += clsData.iGetAttention();
+                        MeditationTotal += clsData.iGetMeditation();
+                        //RecommendCount();
                         clsLineChart.AddPoint(1, dX, clsData.iGetAttention());
                         clsLineChart.AddPoint(2, dX, clsData.iGetMeditation());
                         tvAM.setText("專注值");
@@ -1313,7 +1321,9 @@ public class Test extends Activity {
                             }
                         }
                         ComboCount();
-                        RecommendCount();
+                        AttentionTotal += clsData.iGetAttention();
+                        MeditationTotal += clsData.iGetMeditation();
+                        //RecommendCount();
                         clsLineChart.AddPoint(1, dX, clsData.iGetAttention());
                         clsLineChart.AddPoint(2, dX, clsData.iGetMeditation());
                         tvAM.setText("放鬆值");
@@ -1346,7 +1356,9 @@ public class Test extends Activity {
                             }
                         }
                         ComboCount();
-                        RecommendCount();
+                        AttentionTotal += clsData.iGetAttention();
+                        MeditationTotal += clsData.iGetMeditation();
+                        //RecommendCount();
                         clsLineChart.AddPoint(1, dX, clsData.iGetAttention());
                         clsLineChart.AddPoint(2, dX, clsData.iGetMeditation());
                         tvAM.setText("專注值");

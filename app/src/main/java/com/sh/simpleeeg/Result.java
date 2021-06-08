@@ -151,19 +151,21 @@ public class Result extends Activity {
             tvGradeLevel.setTextColor(Color.parseColor("#FFCA28"));
         }
 
+        //推薦內容======================================================================================================================
         List recommendArray = new ArrayList();
-        recommendArray.add(Test.RecommendCount_A1);  //古典 + 專注
-        recommendArray.add(Test.RecommendCount_A2);  //平靜 + 專注
-        recommendArray.add(Test.RecommendCount_A3);  //熱血 + 專注
-        recommendArray.add(Test.RecommendCount_A4);  //流行 + 專注
-        recommendArray.add(Test.RecommendCount_A5);  //雙耳 + 專注
-        recommendArray.add(Test.RecommendCount_M1);  //古典 + 放鬆
-        recommendArray.add(Test.RecommendCount_M2);  //平靜 + 放鬆
-        recommendArray.add(Test.RecommendCount_M3);  //熱血 + 放鬆
-        recommendArray.add(Test.RecommendCount_M4);  //流行 + 放鬆
-        recommendArray.add(Test.RecommendCount_M5);  //古典 + 放鬆
+        recommendArray.add(Test.AttentionAvg1);  //古典 + 專注
+        recommendArray.add(Test.AttentionAvg2);  //平靜 + 專注
+        recommendArray.add(Test.AttentionAvg3);  //熱血 + 專注
+        recommendArray.add(Test.AttentionAvg4);  //流行 + 專注
+        recommendArray.add(Test.AttentionAvg5);  //雙耳 + 專注
+        recommendArray.add(Test.MeditationAvg1);  //古典 + 放鬆
+        recommendArray.add(Test.MeditationAvg2);  //平靜 + 放鬆
+        recommendArray.add(Test.MeditationAvg3);  //熱血 + 放鬆
+        recommendArray.add(Test.MeditationAvg4);  //流行 + 放鬆
+        recommendArray.add(Test.MeditationAvg5);  //古典 + 放鬆
+
         int RecommendMAX = recommendArray.indexOf(Collections.max(recommendArray));
-        System.out.println("RecommendMAX : " + RecommendMAX);
+
         switch (RecommendMAX){
             case 0 :
                 tvRecommend01.setText("古典");tvRecommend01.setBackgroundResource(R.drawable.challenge_song);
@@ -206,7 +208,7 @@ public class Result extends Activity {
                 tvRecommend02.setText("放鬆");tvRecommend02.setBackgroundResource(R.drawable.challenge_meditation);
                 break;
         }
-
+        //==========================================================================================================================
     }
 
 
