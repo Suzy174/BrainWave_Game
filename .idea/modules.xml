@@ -7,7 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/BrainWave_Game-app.iml" filepath="$PROJECT_DIR$/app/BrainWave_Game-app.iml" group="BrainWave_Game/app" />
       <module fileurl="file://$PROJECT_DIR$/BrainWave_Game_OK.iml" filepath="$PROJECT_DIR$/BrainWave_Game_OK.iml" group="BrainWave_Game_OK" />
       <module fileurl="file://$PROJECT_DIR$/app/BrainWave_Game_OK-app.iml" filepath="$PROJECT_DIR$/app/BrainWave_Game_OK-app.iml" group="BrainWave_Game_OK/app" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="BrainWave_Animation_AddCloud_OK_Test/app" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="BrainWave_Game/app" />
     </modules>
   </component>
 </project>

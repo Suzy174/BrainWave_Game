@@ -83,7 +83,7 @@ public class Test extends Activity {
             DB_TABLE = "sample", DB_TABLE2 = "sample2" , DB_TABLE_ID = "sample3";
     private LinearLayout mLinLay;
     private ImageView imgGhost,imgDog,imgAudience,imgFlower01,imgFlower02,imgFlower03,imgFlower04,imgFlower05
-            ,imgNote01,imgNote02,imgNote03,imgNote04,imgNote05
+            ,imgNote01,imgNote02,imgNote03,imgNote04,imgNote05,imglevelatt,imglevelma
             ,imgLifeValue
             ,imgCombo;
     private Dialog mDlgNext;
@@ -433,6 +433,8 @@ public class Test extends Activity {
                 tvBeforeCombo = mDlgNext.findViewById(R.id.tvBeforeCombo);
                 tvChallengeWhat = mDlgNext.findViewById(R.id.tvChallengeWhat);
                 tvChallengeSong = mDlgNext.findViewById(R.id.tvChallengeSong);
+                imglevelatt = (ImageView) mDlgNext.findViewById(R.id.imglevelatt);
+                imglevelma = (ImageView) mDlgNext.findViewById(R.id.imglevelma);
                 Button loginBtnNext = mDlgNext.findViewById(R.id.btnNext);
 
                 switch (level){ //訊息及切換背景
@@ -450,6 +452,8 @@ public class Test extends Activity {
                         tvChallengeWhat.setBackgroundResource(R.drawable.challenge_meditation);
                         tvChallengeSong.setText("平靜");
                         tvChallengeSong.setBackgroundResource(R.drawable.challenge_song);
+                        imglevelatt.setAlpha(0f);//圖片完全透明
+                        imglevelma.setAlpha(1f);//圖片完全不透明
                         //=
                         tvIntroduction.setText("音樂家要利用放鬆值來使觀眾靠近" + "\n"
                                                 + "觀眾只要靠近就會獻上一朵花" + "\n"
@@ -458,7 +462,7 @@ public class Test extends Activity {
                         tvLevelDifficulty.setText("生命值 : 一點生命值 +4分");
                         tvCombo.setText("Combo : 一次Combo +6分");
                         //=
-                        loginBtnNext.setText("開始第二關");
+                        //loginBtnNext.setText("開始第二關");
                         //=
                         imgLifeValue.setImageResource(R.drawable.flowerscore);
                         Glide.with(mContext).load(R.drawable.bg_test_nature).apply(myGdiOptions).into(ivBG);
@@ -484,6 +488,8 @@ public class Test extends Activity {
                         tvChallengeWhat.setBackgroundResource(R.drawable.challenge_attention);
                         tvChallengeSong.setText("熱血");
                         tvChallengeSong.setBackgroundResource(R.drawable.challenge_song);
+                        imglevelatt.setAlpha(1f);//圖片完全不透明
+                        imglevelma.setAlpha(0f);//圖片完全透明
                         //=
                         tvIntroduction.setText("音樂家要利用專注值來驅趕鬼怪" + "\n"
                                 + "鬼怪只要靠近就會失去一點音樂天分" + "\n"
@@ -492,7 +498,7 @@ public class Test extends Activity {
                         tvLevelDifficulty.setText("生命值 : 一點生命值 +4分");
                         tvCombo.setText("Combo : 一次Combo +7分");
                         //=
-                        loginBtnNext.setText("開始第三關");
+                        //loginBtnNext.setText("開始第三關");
                         //=
                         imgLifeValue.setImageResource(R.drawable.note);
                         Glide.with(mContext).load(R.drawable.bg_test_hot).apply(myGdiOptions).into(ivBG);
@@ -514,6 +520,8 @@ public class Test extends Activity {
                         tvChallengeWhat.setBackgroundResource(R.drawable.challenge_meditation);
                         tvChallengeSong.setText("流行");
                         tvChallengeSong.setBackgroundResource(R.drawable.challenge_song);
+                        imglevelatt.setAlpha(0f);
+                        imglevelma.setAlpha(1f);
                         //=
                         tvIntroduction.setText("音樂家要利用放鬆值來使觀眾靠近" + "\n"
                                 + "觀眾只要靠近就會獻上一朵花" + "\n"
@@ -522,7 +530,7 @@ public class Test extends Activity {
                         tvLevelDifficulty.setText("生命值 : 一點生命值 +4分");
                         tvCombo.setText("Combo : 一次Combo +8分");
                         //=
-                        loginBtnNext.setText("開始第四關");
+                        //loginBtnNext.setText("開始第四關");
                         //=
                         imgLifeValue.setImageResource(R.drawable.flowerscore);
                         Glide.with(mContext).load(R.drawable.bg_test_popular).apply(myGdiOptions).into(ivBG);
@@ -543,6 +551,8 @@ public class Test extends Activity {
                         tvChallengeWhat.setBackgroundResource(R.drawable.challenge_attention);
                         tvChallengeSong.setText("雙耳波差");
                         tvChallengeSong.setBackgroundResource(R.drawable.challenge_song);
+                        imglevelatt.setAlpha(1f);
+                        imglevelma.setAlpha(0f);
                         //=
                         tvIntroduction.setText("音樂家要利用專注值來驅趕鬼怪" + "\n"
                                 + "鬼怪只要靠近就會失去一點音樂天分" + "\n"
@@ -551,7 +561,7 @@ public class Test extends Activity {
                         tvLevelDifficulty.setText("生命值 : 一點生命值 +4分");
                         tvCombo.setText("Combo : 一次Combo +9分");
                         //=
-                        loginBtnNext.setText("開始第五關");
+                        //loginBtnNext.setText("開始第五關");
                         //=
                         imgLifeValue.setImageResource(R.drawable.note);
                         Glide.with(mContext).load(R.drawable.bg_test_mysterious).apply(myGdiOptions).into(ivBG);
@@ -567,6 +577,8 @@ public class Test extends Activity {
                         tvNextLevel.setText("遊戲結束");
                         tvBeforeGain.setText("前一關獲得 " + LifeValue + " 點生命點");
                         tvBeforeCombo.setText("前一關獲得 " + ComboCount5 + " 點Combo");
+                        imglevelatt.setAlpha(0f);
+                        imglevelma.setAlpha(0f);
                         //=
                         tvChallengeWhat.setText("");
                         tvChallengeSong.setText("");

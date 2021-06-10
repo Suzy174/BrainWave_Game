@@ -62,7 +62,7 @@ public class Main extends Activity {
             ,tvChallengeWhat,tvChallengeSong
             ,tvIntroName;
     TextView tvName, tvBirthday, tvSex, tvBloodType;
-    ImageView ivBG, ivSignal,ivCaption,ivStartTest;
+    ImageView ivBG, ivSignal,ivCaption,ivStartTest,imglevelatt,imglevelma;
     EditText etName, etBirthday, etSex, etBloodType;
 
     static private ClockThreadMain m_clockThreadMain;
@@ -300,6 +300,8 @@ public class Main extends Activity {
         tvBeforeCombo = mDlgNext.findViewById(R.id.tvBeforeCombo);
         tvChallengeWhat = mDlgNext.findViewById(R.id.tvChallengeWhat);
         tvChallengeSong = mDlgNext.findViewById(R.id.tvChallengeSong);
+        imglevelatt = (ImageView) mDlgNext.findViewById(R.id.imglevelatt);
+        imglevelma = (ImageView) mDlgNext.findViewById(R.id.imglevelma);
         Button loginBtnNext = mDlgNext.findViewById(R.id.btnNext);
         loginBtnNext.setOnClickListener(FirstGameOnClick);
         mDlgNext.show();
@@ -320,6 +322,8 @@ public class Main extends Activity {
         tvChallengeWhat.setBackgroundResource(R.drawable.challenge_attention);
         tvChallengeSong.setText("古典");
         tvChallengeSong.setBackgroundResource(R.drawable.challenge_song);
+        imglevelatt.setAlpha(1f);//圖片完全不透明
+        imglevelma.setAlpha(0f);//圖片完全透明
         //=
         tvIntroduction.setText("音樂家要利用專注值來驅趕鬼怪" + "\n"
                 + "鬼怪只要靠近就會失去一點音樂天分" + "\n"
@@ -328,7 +332,7 @@ public class Main extends Activity {
         tvLevelDifficulty.setText("生命值 : 一點生命值 +4分");
         tvCombo.setText("Combo : 一次Combo +5分");
         //=
-        loginBtnNext.setText("開始第一關");
+        //loginBtnNext.setText("開始第一關");
     }
 
     static void addSql() {

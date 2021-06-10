@@ -26,6 +26,7 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scrollbarThumbVertical="@drawable/bg_scroll_bar"
         app:layout_constraintBottom_toTopOf="@+id/guideline65"
         app:layout_constraintEnd_toStartOf="@+id/guideline42"
         app:layout_constraintStart_toStartOf="@+id/guideline41"
@@ -60,18 +61,15 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView8"
+            <ImageView
+                android:id="@+id/ivlabel03"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:layout_marginRight="80dp"
-                android:background="@drawable/content_box_title"
+                android:layout_height="70dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:gravity="center"
-                android:text="關卡介紹"
-                android:textColor="#FFFFFF"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:src="@drawable/label_ex03" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -123,6 +121,19 @@
                             android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
+                <pl.droidsonroids.gif.GifImageView
+                    android:id="@+id/imglevelma"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/level_ma"
+                     />
+
+                <pl.droidsonroids.gif.GifImageView
+                    android:id="@+id/imglevelatt"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="-150dp"
+                    android:src="@drawable/level_att" />
 
                 <TextView
                     android:id="@+id/tvIntroduction"
@@ -137,18 +148,15 @@
                     android:textSize="18sp" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView20"
+            <ImageView
+                android:id="@+id/ivlabel04"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:layout_marginRight="80dp"
-                android:background="@drawable/content_box_title"
+                android:layout_height="70dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:gravity="center"
-                android:text="得分說明"
-                android:textColor="#FFFFFF"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:src="@drawable/label_ex04" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -189,9 +197,11 @@
         android:id="@+id/btnNext"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/button_dialog"
         android:padding="5dp"
-        android:text="下一關"
+        android:text="Start"
         android:textColor="#FFFFFF"
         android:textSize="25sp"
         android:textStyle="bold"
